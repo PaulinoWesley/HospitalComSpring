@@ -3,13 +3,19 @@ package br.com.hospital.wesley.entity;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(schema = "hospital")
 public class Paciente {
 	@Id
 	private String cpf;
+
 	@Column
 	private String nome;
+
 	@Column
 	private LocalDate dataNascimento;
 
