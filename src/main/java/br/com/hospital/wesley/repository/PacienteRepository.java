@@ -18,5 +18,6 @@ public interface PacienteRepository  extends JpaRepository<Paciente, String>{
 			+ "	AND (:#{#filtro.dataNascimento} IS NULL OR p.dataNascimento = :#{#filtro.dataNascimento})")
 	List<Paciente> findByFilter(@Param("filtro") PacienteFilterDto filtro);
 	
+	Paciente findByCpf(String cpf);
 	
 }
