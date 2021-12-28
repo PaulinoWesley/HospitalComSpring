@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,13 @@ public class ConsultaController {
 	public List<Consulta> findByFilter(ConsultaFilterDto filtro) {
 		return consultaRepository.findByFilter(filtro);
 	}
+	
+	@GetMapping("/{id}")
+	public Consulta findByFilter(@PathVariable Integer id) {
+		return consultaRepository.findById(id).get();
+	}
+	
+
 	
 	@PostMapping
 	public Consulta salvar(@RequestBody Consulta consulta) {

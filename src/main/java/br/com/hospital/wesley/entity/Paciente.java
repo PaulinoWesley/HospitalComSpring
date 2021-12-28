@@ -7,8 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.Data;
+
 @Entity
 @Table(schema = "hospital")
+@Data
 public class Paciente {
 	@Id
 	private String cpf;
@@ -17,39 +22,6 @@ public class Paciente {
 	private String nome;
 
 	@Column
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataNascimento;
-
-	public Paciente() {
-	}
-
-	public Paciente(String cpf, String nome, LocalDate dataNascimento) {
-		this.cpf = cpf;
-		this.nome = nome;
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
 }
