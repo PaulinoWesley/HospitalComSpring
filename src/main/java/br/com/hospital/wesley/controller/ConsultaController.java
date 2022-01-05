@@ -32,8 +32,6 @@ public class ConsultaController {
 		return consultaRepository.findById(id).get();
 	}
 	
-
-	
 	@PostMapping
 	public Consulta salvar(@RequestBody Consulta consulta) {
 		consultaRepository.save(consulta);
@@ -51,5 +49,5 @@ public class ConsultaController {
 		consultaRepository.delete(consulta);
 		return consulta;
 	}
-	
+
 }

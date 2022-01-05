@@ -13,7 +13,7 @@ public interface ConsultaRepository extends JpaRepository<Consulta, Integer> {
 
 	@Query(value = "SELECT c from Consulta c "
 			+ "WHERE "
-			+ "	(:#{#filtro.paciente} IS NULL OR c.paciente like :#{#filtro.paciente} + '%') "
+			+ "	(:#{#filtro.paciente} IS NULL OR c.paciente LIKE :#{#filtro.paciente} + '%') "
 			+ "	AND (:#{#filtro.medico} IS NULL OR c.medico LIKE '%' + :#{#filtro.medico} + '%') "
 			+ "	AND (:#{#filtro.horarioConsulta} IS NULL OR c.horarioConsulta = :#{#filtro.horarioConsulta})")
 	List<Consulta> findByFilter(@Param("filtro") ConsultaFilterDto filtro);
