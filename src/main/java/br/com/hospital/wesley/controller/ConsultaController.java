@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.hospital.wesley.dto.ConsultaFilterDto;
+import br.com.hospital.wesley.dto.ConsultaParaCriarDto;
 import br.com.hospital.wesley.entity.Consulta;
 import br.com.hospital.wesley.repository.ConsultaRepository;
 
@@ -21,29 +22,33 @@ import br.com.hospital.wesley.repository.ConsultaRepository;
 public class ConsultaController {
 	@Autowired
 	ConsultaRepository consultaRepository;
-	
+
 	@GetMapping
 	public List<Consulta> findByFilter(ConsultaFilterDto filtro) {
 		return consultaRepository.findByFilter(filtro);
 	}
-	
+
 	@GetMapping("/{id}")
 	public Consulta findByFilter(@PathVariable Integer id) {
 		return consultaRepository.findById(id).get();
 	}
-	
+
 	@PostMapping
-	public Consulta salvar(@RequestBody Consulta consulta) {
+	public Consulta salvar(@RequestBody ConsultaParaCriarDto consultaDto) {
+		var consulta = Consulta.of(consultaDto);
 		consultaRepository.save(consulta);
+
 		return consulta;
 	}
-	
+
 	@PutMapping
-	public Consulta atualizar(@RequestBody Consulta consulta ) {
+	public Consulta atualizar(@RequestBody ConsultaParaCriarDto consultaDto) {
+		Consulta consulta = Consulta.of(consultaDto);
 		consultaRepository.save(consulta);
+
 		return consulta;
 	}
-	
+
 	@DeleteMapping
 	public Consulta deletar(@RequestBody Consulta consulta) {
 		consultaRepository.delete(consulta);
